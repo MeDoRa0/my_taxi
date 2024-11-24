@@ -63,10 +63,18 @@ class _DocumentItemState extends State<DocumentItem> {
 
             await localImagePicker(context);
           },
-          icon: Icon(
-            isUploaded ? Icons.check_circle : Icons.upload,
-            color: Colors.blue,
-          ),
+          icon: isUploaded
+              ? const Icon(
+                  Icons.check_circle_rounded,
+                  color: Color(0xFF3422F2),
+                  size: 35,
+                )
+              : Container(
+                  padding: EdgeInsets.all(5),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(16),
+                      color: const Color(0xffE5E7E7)),
+                  child: const Icon(Icons.file_upload_outlined)),
         ),
       ),
     );

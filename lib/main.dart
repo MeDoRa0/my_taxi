@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:my_taxi/provider/image_picker_provider.dart';
 import 'package:my_taxi/screens/my_documents_screen.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   runApp(const MyTaxi());
@@ -10,9 +12,16 @@ class MyTaxi extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'my taxi',
-      home: MyDocumentScreen(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (context) => ImageProviderModel(),
+        ),
+      ],
+      child: MaterialApp(
+        title: 'my taxi',
+        home: MyDocumentScreen(),
+      ),
     );
   }
 }

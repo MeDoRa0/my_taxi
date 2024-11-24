@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:my_taxi/provider/image_picker_provider.dart';
 import 'package:my_taxi/widgets/document_item.dart';
+import 'package:provider/provider.dart';
 
 class MyDocumentScreen extends StatelessWidget {
   final List<String> documentTitles = [
@@ -31,9 +33,13 @@ class MyDocumentScreen extends StatelessWidget {
                   color: const Color(0xFF3422F2),
                   borderRadius: BorderRadius.circular(100),
                 ),
-                child: const Text(
-                  "0/9",
-                  style: TextStyle(color: Colors.white),
+                child: Consumer<ImageProviderModel>(
+                  builder: (context, imageProvider, child) {
+                    return Text(
+                      '${imageProvider.uploadedCount}/${documentTitles.length}',
+                      style: const TextStyle(color: Colors.white),
+                    );
+                  },
                 ),
               ),
             ),

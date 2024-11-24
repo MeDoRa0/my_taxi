@@ -3,12 +3,17 @@ import 'package:image_picker/image_picker.dart';
 
 class ImageProviderModel with ChangeNotifier {
   XFile? _pickedImage;
+  int _uploadedCount = 0;
 
   XFile? get pickedImage => _pickedImage;
+  int get uploadedCount => _uploadedCount;
 
   void setPickedImage(XFile? image) {
-    _pickedImage = image;
-    notifyListeners();
+    if (image != null) {
+      _pickedImage = image;
+      _uploadedCount++;
+      notifyListeners();
+    }
   }
 
   void clearImage() {
